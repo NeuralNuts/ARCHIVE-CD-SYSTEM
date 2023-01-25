@@ -89,19 +89,21 @@ public class ArchiveConsoleForm implements ActionListener
     public ArchiveConsoleForm()
     {
         prepareGUI();
-        showGidBagLayout();
+        showGidBagProcessLayout();
+        showGidBagLayout2();
     }
     public static void main(String[] args)
     {
         ArchiveConsoleForm archive_console_form = new ArchiveConsoleForm();
-        archive_console_form.showGidBagLayout();
+        archive_console_form.showGidBagProcessLayout();
     }
 
     private void prepareGUI()
     {
         main_frame = new JFrame("Archive Console");
-        main_frame.setSize(400, 400);
-        main_frame.setLayout(new GridLayout(3, 1));
+        main_frame.setSize(1400, 800);
+        main_frame.setLayout(new GridLayout(0, 1));
+        main_frame.getContentPane().setBackground(new Color(205, 205, 205));
 
         lbl_header_label = new JLabel("Archive Console", JLabel.CENTER);
         lbl_header_label.setSize(100, 100);
@@ -121,24 +123,81 @@ public class ArchiveConsoleForm implements ActionListener
 
     }
 
-
-    private void showGidBagLayout()
+    private void showGidBagProcessLayout()
     {
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.BLACK);
-        panel.setSize(300, 300);
+        JPanel process_log_panel = new JPanel();
+        process_log_panel.setBackground(Color.white);
+        process_log_panel.setSize(300, 800);
         GridBagLayout layout = new GridBagLayout();
 
-        panel.setLayout(layout);
+        process_log_panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
+
+        btn_search =  new JButton("Search");
+        lbl_process_log = new JLabel("Process Log");
+        txt_area_process_log =  new JTextArea("xgfgfdfd");
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        process_log_panel.add(btn_search, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 10, 0, 100);
+        process_log_panel.add(lbl_process_log, gbc);
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
-        gbc.gridy = 0;
-        btn_search =  new JButton("Search");
-        panel.add(btn_search, gbc);
+        gbc.gridy = 2;
+        gbc.ipady = 210;
+        gbc.gridwidth = 2;
+        process_log_panel.add(txt_area_process_log, gbc);
 
-        control_panel.add(panel);
+
+
+
+
+        control_panel.add(process_log_panel);
+        main_frame.setVisible(true);
+    }
+
+    private void showGidBagLayout2()
+    {
+        JPanel process_log_panel = new JPanel();
+        process_log_panel.setBackground(Color.white);
+        process_log_panel.setSize(300, 800);
+        GridBagLayout layout = new GridBagLayout();
+
+        process_log_panel.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        btn_search =  new JButton("Search");
+        lbl_process_log = new JLabel("Process Log");
+        txt_area_process_log =  new JTextArea("xgfgfdfd");
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        process_log_panel.add(btn_search, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 10, 0, 100);
+        process_log_panel.add(lbl_process_log, gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.ipady = 210;
+        gbc.gridwidth = 2;
+        process_log_panel.add(txt_area_process_log, gbc);
+
+
+
+
+
+        control_panel.add(process_log_panel);
         main_frame.setVisible(true);
     }
     @Override
