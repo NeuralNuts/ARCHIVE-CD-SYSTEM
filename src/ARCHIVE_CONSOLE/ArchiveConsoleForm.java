@@ -3,12 +3,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ArchiveConsoleForm implements ActionListener {
+public class ArchiveConsoleForm implements ActionListener
+{
 
     //<editor-fold defaultstate="collapsed" desc="Swing UI private classes variables instantiated eg; JFrame..">
 
     //Main frame and header label section
     private JFrame main_frame;
+    private JPanel control_panel;
     private JLabel lbl_header_label;
 
     // Search string UI section
@@ -84,9 +86,64 @@ public class ArchiveConsoleForm implements ActionListener {
     private JButton btn_exit;
     //</editor-fold>
 
+    public ArchiveConsoleForm()
+    {
+        prepareGUI();
+        showGidBagLayout();
+    }
+    public static void main(String[] args)
+    {
+        ArchiveConsoleForm archive_console_form = new ArchiveConsoleForm();
+        archive_console_form.showGidBagLayout();
+    }
 
+    private void prepareGUI()
+    {
+        main_frame = new JFrame("Archive Console");
+        main_frame.setSize(400, 400);
+        main_frame.setLayout(new GridLayout(3, 1));
+
+        lbl_header_label = new JLabel("Archive Console", JLabel.CENTER);
+        lbl_header_label.setSize(100, 100);
+
+        main_frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent windowEvent){
+                System.exit(0);
+            }
+        });
+
+        control_panel = new JPanel();
+        control_panel.setLayout(new FlowLayout());
+
+        main_frame.add(lbl_header_label);
+        main_frame.add(control_panel);
+        main_frame.setVisible(true);
+
+    }
+
+
+    private void showGidBagLayout()
+    {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.BLACK);
+        panel.setSize(300, 300);
+        GridBagLayout layout = new GridBagLayout();
+
+        panel.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        btn_search =  new JButton("Search");
+        panel.add(btn_search, gbc);
+
+        control_panel.add(panel);
+        main_frame.setVisible(true);
+    }
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
 
     }
 }
