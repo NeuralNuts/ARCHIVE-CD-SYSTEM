@@ -39,7 +39,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
             txt_x_coordinate,
             txt_y_coordinate,
             txt_bar_code,
-            txt_description,
+            txt_section,
             txt_sort_section;
 
     JButton btn_search,
@@ -64,7 +64,8 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
             btn_reverse_order_sort,
             btn_exit;
 
-    JTextArea txt_area_process_log;
+    JTextArea txt_area_process_log,
+                txt_area_description;
 
     JTable tbl_archive_cd;
     //</editor-fold>
@@ -127,6 +128,62 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         lbl_hash_map_set.setFont(new Font("Comic Sans", Font.BOLD, 15));
         btn_save = JFrame.BuildJButton("Save", this, 80, 20, 518, 190, layout, this);
         btn_display = JFrame.BuildJButton("Display", this, 80, 20, 518, 275, layout, this);
+
+        lbl_title = JFrame.BuildJLabel("Title:", 600, 10, 140, 100, layout, this);
+        lbl_title.setForeground(Color.WHITE);
+        lbl_title.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_title = JFrame.BuildJTextField("", this, 80, 20, 51, 645, layout, this);
+
+        lbl_author = JFrame.BuildJLabel("Author:", 600, 40, 140, 100, layout, this);
+        lbl_author.setForeground(Color.WHITE);
+        lbl_author.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_author = JFrame.BuildJTextField("", this, 80, 20, 81, 657, layout, this);
+
+        lbl_section = JFrame.BuildJLabel("Section:", 600, 70, 180, 100, layout, this);
+        lbl_section.setForeground(Color.WHITE);
+        lbl_section.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_section = JFrame.BuildJTextField("", this, 30, 20, 111, 665, layout, this);
+
+        lbl_x_coordinate = JFrame.BuildJLabel("X:", 600, 100, 180, 100, layout, this);
+        lbl_x_coordinate.setForeground(Color.WHITE);
+        lbl_x_coordinate.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_x_coordinate = JFrame.BuildJTextField("", this, 30, 20, 140, 665, layout, this);
+
+        lbl_y_coordinate = JFrame.BuildJLabel("Y:", 600, 130, 180, 100, layout, this);
+        lbl_y_coordinate.setForeground(Color.WHITE);
+        lbl_y_coordinate.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_y_coordinate = JFrame.BuildJTextField("", this, 30, 20, 170, 665, layout, this);
+
+        lbl_bar_code = JFrame.BuildJLabel("BarCode:", 600, 160, 180, 100, layout, this);
+        lbl_bar_code.setForeground(Color.WHITE);
+        lbl_bar_code.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_bar_code = JFrame.BuildJTextField("", this, 30, 20, 201, 670, layout, this);
+
+        lbl_description = JFrame.BuildJLabel("Description:", 600, 190, 180, 100, layout, this);
+        lbl_description.setForeground(Color.WHITE);
+        lbl_description.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_area_description = JFrame.BuildAJTextArea(10, 3, 690, 237, layout, this);
+        txt_area_description.setBorder(black_line);
+
+        lbl_automation_action_request = JFrame.BuildJLabel("Automation Action Request for the item above", 550, 260, 350, 100, layout, this);
+        lbl_automation_action_request.setForeground(Color.WHITE);
+        lbl_automation_action_request.setFont(new Font("Comic Sans", Font.BOLD, 15));
+
+        btn_retrieve = JFrame.BuildJButton("Retrieve", this, 100, 20, 310, 680, layout, this);
+        btn_remove = JFrame.BuildJButton("Remove", this, 100, 20, 335, 800, layout, this);
+        btn_return = JFrame.BuildJButton("Return", this, 100, 20, 335, 680, layout, this);
+        btn_add_to_collection = JFrame.BuildJButton("Add to Collection", this, 130, 20, 310, 830, layout, this);
+
+        lbl_automation_action_request = JFrame.BuildJLabel("Sort Section:", 590, 360, 350, 100, layout, this);
+        lbl_automation_action_request.setForeground(Color.WHITE);
+        lbl_automation_action_request.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        txt_sort_section = JFrame.BuildJTextField("", this, 80, 20, 401, 690, layout, this);
+
+        btn_random_collection_sort = JFrame.BuildJButton("Random Collection Sort", this, 180, 20, 410, 820, layout, this);
+        btn_mostly_sorted_sort = JFrame.BuildJButton("Mostly Sorted sort", this, 180, 20, 435, 820, layout, this);
+        btn_reverse_order_sort = JFrame.BuildJButton("Reverse Order Sort", this, 180, 20, 460, 820, layout, this);
+
+        btn_exit = JFrame.BuildJButton("Exit", this, 180, 20, 530, 820, layout, this);
 
         setVisible(true);
     }
