@@ -71,7 +71,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
     //<editor-fold default-state="collapsed" desc="UI">
     public ArchiveConsoleForm() throws IOException {
-        setSize(900, 600);
+        setSize(900, 620);
         setLocation(300, 200);
 
         getContentPane().setBackground(new Color(4, 136, 82, 195));
@@ -117,18 +117,23 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         lbl_display_binary_tree = JFrame.BuildJLabel("Display Binary tree:", 10, 490, 140, 50, layout, this);
         lbl_display_binary_tree.setForeground(Color.WHITE);
         lbl_display_binary_tree.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        btn_pre_order = JFrame.BuildJButton("Pre-Order", this, 100, 20, 489, 235, layout, this);
+        btn_in_order = JFrame.BuildJButton("In-Order", this, 100, 20, 489, 336, layout, this);
+        btn_post_order = JFrame.BuildJButton("Post-Order", this, 100, 20, 489, 437, layout, this);
+        btn_graphical = JFrame.BuildJButton("Graphical", this, 100, 20, 489, 538, layout, this);
 
         lbl_hash_map_set = JFrame.BuildJLabel("HashMap / Set:", 10, 520, 140, 50, layout, this);
         lbl_hash_map_set.setForeground(Color.WHITE);
         lbl_hash_map_set.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        btn_save = JFrame.BuildJButton("Save", this, 80, 20, 518, 190, layout, this);
+        btn_display = JFrame.BuildJButton("Display", this, 80, 20, 518, 275, layout, this);
 
         setVisible(true);
     }
     //</editor-fold>
 
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
