@@ -1,205 +1,112 @@
 package ARCHIVE_CONSOLE;
+
+import BUILDER_LIBARY.JFrame;
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 
-public class ArchiveConsoleForm implements ActionListener
+public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionListener
 {
+    SpringLayout layout = new SpringLayout();
 
-    //<editor-fold defaultstate="collapsed" desc="Swing UI private classes variables instantiated eg; JFrame..">
+    //<editor-fold default-state="collapsed" desc="Instantiating J components">
+    JLabel lbl_header_label,
+            lbl_search_string,
+            lbl_sort,
+            lbl_process_log,
+            lbl_display_binary_tree,
+            lbl_hash_map_set,
+            lbl_title,
+            lbl_author,
+            lbl_section,
+            lbl_x_coordinate,
+            lbl_y_coordinate,
+            lbl_bar_code,
+            lbl_description,
+            lbl_automation_action_request,
+            lbl_sort_section;
 
-    //Main frame and header label section
-    private JFrame main_frame;
-    private JPanel control_panel;
-    private JLabel lbl_header_label;
+    JTextField txt_search_string,
+            txt_title,
+            txt_title_id,
+            txt_author,
+            txt_x_coordinate,
+            txt_y_coordinate,
+            txt_bar_code,
+            txt_description,
+            txt_sort_section;
 
-    // Search string UI section
-    private JLabel lbl_search_string;
-    private JTextField txt_search_string;
-    private JButton btn_search;
+    JButton btn_search,
+            btn_process_log,
+            btn_by_title,
+            btn_by_author,
+            btn_by_barcode,
+            btn_pre_order,
+            btn_in_order,
+            btn_post_order,
+            btn_graphical,
+            btn_save,
+            btn_display,
+            btn_new_item,
+            btn_save_or_update,
+            btn_retrieve,
+            btn_remove,
+            btn_return,
+            btn_add_to_collection,
+            btn_random_collection_sort,
+            btn_mostly_sorted_sort,
+            btn_reverse_order_sort,
+            btn_exit;
 
-    // Process log UI section
-    private JLabel lbl_process_log;
-    private JButton btn_process_log;
-    private JTextArea txt_area_process_log;
+    JTextArea txt_area_process_log;
 
-    // Display binary tree UI section
-    private JLabel lbl_display_binary_tree;
-    private JButton btn_pre_order;
-    private JButton btn_in_order;
-    private JButton btn_post_order;
-    private JButton btn_graphical;
-
-    // Hash map and set UI section
-    private JLabel lbl_hash_map_set;
-    private JButton btn_save;
-    private JButton btn_display;
-
-    // Title UI section
-    private JLabel lbl_title;
-    private JTextField txt_title;
-    private JTextField txt_title_id;
-
-    // Author UI section
-    private JLabel lbl_author;
-    private JTextField txt_author;
-
-    // Sections UI section lol
-    private JLabel lbl_section;
-    private JLabel txt_section;
-
-    // X coordinate UI section
-    private JLabel lbl_x_coordinate;
-    private JTextField txt_x_coordinate;
-
-    // Y coordinate UI section
-    private JLabel lbl_y_coordinate;
-    private JTextField txt_y_coordinate;
-
-    // Bar code UI section
-    private JLabel lbl_bar_code;
-    private JTextField txt_bar_code;
-
-    // Description UI section
-    private JLabel lbl_description;
-    private JTextField txt_description;
-
-    // New item and save/update UI section
-    private JButton btn_new_item;
-    private JButton btn_save_or_update;
-
-    // Automation action request UI section
-    private JLabel lbl_automation_action_request;
-    private JButton btn_retrieve;
-    private JButton btn_remove;
-    private JButton btn_return;
-    private JButton btn_add_to_collection;
-
-    // Sort section UI section
-    private JLabel lbl_sort_section;
-    private JTextField txt_sort_section;
-    private JButton btn_random_collection_sort;
-    private JButton btn_mostly_sorted_sort;
-    private JButton btn_reverse_order_sort;
-
-    // Exit UI section
-    private JButton btn_exit;
+    JTable tbl_archive_cd;
     //</editor-fold>
 
-    public ArchiveConsoleForm()
-    {
-        prepareGUI();
-        showGidBagProcessLayout();
-        showGidBagLayout2();
-    }
-    public static void main(String[] args)
-    {
-        ArchiveConsoleForm archive_console_form = new ArchiveConsoleForm();
-        archive_console_form.showGidBagProcessLayout();
-    }
+    //<editor-fold default-state="collapsed" desc="UI">
+    public ArchiveConsoleForm() throws IOException {
+        setSize(900, 600);
+        setLocation(300, 200);
 
-    private void prepareGUI()
-    {
-        main_frame = new JFrame("Archive Console");
-        main_frame.setSize(1400, 800);
-        main_frame.setLayout(new GridLayout(0, 1));
-        main_frame.getContentPane().setBackground(new Color(205, 205, 205));
+        getContentPane().setBackground(new Color(4, 136, 82, 195));
 
-        lbl_header_label = new JLabel("Archive Console", JLabel.CENTER);
-        lbl_header_label.setSize(100, 100);
-
-        main_frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent windowEvent){
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                super.windowClosing(windowEvent);
                 System.exit(0);
             }
         });
 
-        control_panel = new JPanel();
-        control_panel.setLayout(new FlowLayout());
+        setLayout(layout);
 
-        main_frame.add(lbl_header_label);
-        main_frame.add(control_panel);
-        main_frame.setVisible(true);
+        lbl_header_label = JFrame.BuildJLabel("Archive Console", 10, 0, 300, 50, layout, this);
+        lbl_header_label.setForeground(Color.WHITE);
+        lbl_header_label.setFont(new Font("Comic Sans", Font.BOLD, 30));
 
+        lbl_search_string = JFrame.BuildJLabel("Search String:", 10, 10, 140, 100, layout, this);
+        lbl_search_string.setForeground(Color.WHITE);
+        lbl_search_string.setFont(new Font("Comic Sans", Font.BOLD, 15));
+
+        txt_search_string = JFrame.BuildJTextField("", this, 80, 20, 51, 135, layout, this);
+
+        btn_search = JFrame.BuildJButton("Search", this, 80, 20, 32, 300, layout, this);
+
+        tbl_archive_cd = JFrame.BuildAJTable(6,10, 10, 100, layout, this);
+        Border white_line = BorderFactory.createLineBorder(Color.BLACK);
+        tbl_archive_cd.setBorder(white_line);
+
+
+        setVisible(true);
     }
+    //</editor-fold>
 
-    private void showGidBagProcessLayout()
-    {
-        JPanel process_log_panel = new JPanel();
-        process_log_panel.setBackground(Color.white);
-        process_log_panel.setSize(300, 800);
-        GridBagLayout layout = new GridBagLayout();
-
-        process_log_panel.setLayout(layout);
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        btn_search =  new JButton("Search");
-        lbl_process_log = new JLabel("Process Log");
-        txt_area_process_log =  new JTextArea("xgfgfdfd");
-
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        process_log_panel.add(btn_search, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 10, 0, 100);
-        process_log_panel.add(lbl_process_log, gbc);
-
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.ipady = 210;
-        gbc.gridwidth = 2;
-        process_log_panel.add(txt_area_process_log, gbc);
-
-
-
-
-
-        control_panel.add(process_log_panel);
-        main_frame.setVisible(true);
-    }
-
-    private void showGidBagLayout2()
-    {
-        JPanel process_log_panel = new JPanel();
-        process_log_panel.setBackground(Color.white);
-        process_log_panel.setSize(300, 800);
-        GridBagLayout layout = new GridBagLayout();
-
-        process_log_panel.setLayout(layout);
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        btn_search =  new JButton("Search");
-        lbl_process_log = new JLabel("Process Log");
-        txt_area_process_log =  new JTextArea("xgfgfdfd");
-
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        process_log_panel.add(btn_search, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 10, 0, 100);
-        process_log_panel.add(lbl_process_log, gbc);
-
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.ipady = 210;
-        gbc.gridwidth = 2;
-        process_log_panel.add(txt_area_process_log, gbc);
-
-
-
-
-
-        control_panel.add(process_log_panel);
-        main_frame.setVisible(true);
-    }
     @Override
     public void actionPerformed(ActionEvent e)
     {
