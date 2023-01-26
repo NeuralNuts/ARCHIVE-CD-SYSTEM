@@ -85,6 +85,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         });
 
         setLayout(layout);
+        Border black_line = BorderFactory.createLineBorder(Color.BLACK);
 
         lbl_header_label = JFrame.BuildJLabel("Archive Console", 10, 0, 300, 50, layout, this);
         lbl_header_label.setForeground(Color.WHITE);
@@ -93,15 +94,33 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         lbl_search_string = JFrame.BuildJLabel("Search String:", 10, 10, 140, 100, layout, this);
         lbl_search_string.setForeground(Color.WHITE);
         lbl_search_string.setFont(new Font("Comic Sans", Font.BOLD, 15));
-
         txt_search_string = JFrame.BuildJTextField("", this, 80, 20, 51, 135, layout, this);
-
         btn_search = JFrame.BuildJButton("Search", this, 80, 20, 32, 300, layout, this);
 
         tbl_archive_cd = JFrame.BuildAJTable(6,10, 10, 100, layout, this);
-        Border white_line = BorderFactory.createLineBorder(Color.BLACK);
-        tbl_archive_cd.setBorder(white_line);
+        tbl_archive_cd.setBorder(black_line);
 
+        lbl_sort = JFrame.BuildJLabel("Sort:", 10, 260, 140, 50, layout, this);
+        lbl_sort.setForeground(Color.WHITE);
+        lbl_sort.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        btn_by_title = JFrame.BuildJButton("By Title", this, 80, 20, 258, 120, layout, this);
+        btn_by_author = JFrame.BuildJButton("By Author", this, 90, 20, 258, 230, layout, this);
+        btn_by_author = JFrame.BuildJButton("By Barcode", this, 110, 20, 258, 440, layout, this);
+
+        lbl_process_log = JFrame.BuildJLabel("Process Log:", 10, 310, 140, 50, layout, this);
+        lbl_process_log.setForeground(Color.WHITE);
+        lbl_process_log.setFont(new Font("Comic Sans", Font.BOLD, 15));
+        btn_process_log = JFrame.BuildJButton("Process Log", this, 110, 20, 310, 435, layout, this);
+        txt_area_process_log = JFrame.BuildAJTextArea(40, 9, 10, 355, layout, this);
+        txt_area_process_log.setBorder(black_line);
+
+        lbl_display_binary_tree = JFrame.BuildJLabel("Display Binary tree:", 10, 490, 140, 50, layout, this);
+        lbl_display_binary_tree.setForeground(Color.WHITE);
+        lbl_display_binary_tree.setFont(new Font("Comic Sans", Font.BOLD, 15));
+
+        lbl_hash_map_set = JFrame.BuildJLabel("HashMap / Set:", 10, 520, 140, 50, layout, this);
+        lbl_hash_map_set.setForeground(Color.WHITE);
+        lbl_hash_map_set.setFont(new Font("Comic Sans", Font.BOLD, 15));
 
         setVisible(true);
     }
