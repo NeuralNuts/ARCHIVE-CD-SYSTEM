@@ -22,7 +22,7 @@ public class CDModel {
             // and the data
             al = obj;
             // get the column index for the Sent column
-            col = this.findColumn("Sent");
+            col = this.findColumn("On Loan");
         }
 
         // method that needs to be overload. The row count is the size of the ArrayList
@@ -60,12 +60,12 @@ public class CDModel {
         }
 
         // a method to add a new line to the table
-        void add(String word1, String word2, boolean sent)
+        void add(String ID, String word2, boolean sent)
         {
             // make it an array[3] as this is the way it is stored in the ArrayList
             // (not best design but we want simplicity)
             Object[] item = new Object[3];
-            item[0] = word1;
+            item[0] = ID;
             item[1] = word2;
             item[2] = sent;
             al.add(item);

@@ -9,11 +9,11 @@ public class JTableInput {
     public String Y;
     public String BarCode;
     public String Description;
-    public boolean OnLoan;
+    public String OnLoan;
 
     public JTableInput(){}
 
-    public JTableInput(String id, String title, String author, String section, String x, String y, String bar_code, String description, boolean on_loan){
+    public JTableInput(String id, String title, String author, String section, String x, String y, String bar_code, String description, String on_loan){
 
         ID = id;
         Title = title;
@@ -29,6 +29,6 @@ public class JTableInput {
     @Override
     public String toString()
     {
-        return ID + ";" + Title + ";" + Author + ";" + Section + ";" + X + ";" + Y + ";" + Description + ";" + OnLoan;
+        return ID + ";" + Title + ";" + Author + ";" + Section + ";" + X + ";" + Y + ";" + BarCode + ";" + Description + ";" + OnLoan;
     }
 }

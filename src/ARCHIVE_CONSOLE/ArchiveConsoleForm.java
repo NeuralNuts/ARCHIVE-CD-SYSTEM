@@ -193,28 +193,44 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
         // Create column names
         String[] column_names =
-                { "Word 1", "Word 2", "Sent"};
+                { "ID", "Title", "Author", "Section", "X", "Y", "Bar Code", "Description", "On Loan"};
 
-        // Create some data
-        ArrayList dataValues = new ArrayList();
-        dataValues.add(new Object[] {"eff", "fdf", true});
-        dataValues.add(new Object[] {"Hi","there",true});
-        dataValues.add(new Object[] {"True","False",true});
-        dataValues.add(new Object[] {"Cat","Dog",false});
+
+        JTableInput[] jtable_input = new JTableInput[9];
 
         JTable tbl_archive_cd;
+        ArrayList<Object[]> dataValues = new ArrayList<>();
 
-        // constructor of JTable model
+        dataValues.add(new Object[]{
+                jtable_input[0],
+                jtable_input[1],
+                jtable_input[2],
+                jtable_input[3],
+                jtable_input[4],
+                jtable_input[5],
+                jtable_input[6],
+                jtable_input[7],
+                jtable_input[8]});
+
+
         cd_model = new CDModel.MyModel(dataValues, column_names);
         tbl_archive_cd = new JTable(cd_model);
 
         // Configure some of JTable's paramters
         tbl_archive_cd.isForegroundSet();
-        tbl_archive_cd.setLocation(30, 90);
         tbl_archive_cd.setShowHorizontalLines(true);
         tbl_archive_cd.setRowSelectionAllowed(true);
         tbl_archive_cd.setColumnSelectionAllowed(true);
         add(tbl_archive_cd);
+
+        JPanel topPanel = new JPanel();
+        add(topPanel);
+
+        JScrollPane scrollPane = tbl_archive_cd.createScrollPaneForTable(tbl_archive_cd);
+        topPanel.add(scrollPane, BorderLayout.CENTER);
+        topPanel.setPreferredSize(new Dimension(500, 115));
+        layout.putConstraint(SpringLayout.WEST, topPanel, 10, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, topPanel, 80, SpringLayout.NORTH, this);
 
         //tbl_archive_cd.
 
@@ -224,6 +240,8 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
     }
     //</editor-fold>
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
