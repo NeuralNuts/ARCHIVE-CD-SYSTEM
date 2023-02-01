@@ -5,9 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileManager {
-    public JTable[] ReadDataFromFile() {
+    public JTableInput[] ReadDataFromFile() {
 
-        JTable[] data = new JTable[20];
+        JTableInput[] data = new JTableInput[20];
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("CD_ArchivePrototype_SampleData.txt"));
@@ -16,9 +16,10 @@ public class FileManager {
 
             while (!(Line = reader.readLine()).isEmpty()) {
 
-                Object[] temp = Line.split(",");
+                String[] temp = Line.split(";");
+                Boolean[] temp_bool = new Boolean[0];
 
-                data[index] = new JTable(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8], temp[9]);
+                data[index] = new JTableInput(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp_bool[8]);
 
                 index++;
 

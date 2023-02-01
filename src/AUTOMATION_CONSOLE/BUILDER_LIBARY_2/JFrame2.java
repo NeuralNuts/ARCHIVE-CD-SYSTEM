@@ -1,9 +1,11 @@
-package BUILDER_LIBARY;
+package AUTOMATION_CONSOLE.BUILDER_LIBARY_2;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class JFrame {
+public class JFrame2 {
     //<editor-fold defaultstate="collapsed" desc="BuildJLabel">
     public static JLabel BuildJLabel(String text, int xPos, int yPos, int xSize, int ySize, SpringLayout layout, javax.swing.JFrame frame){
 
@@ -60,14 +62,27 @@ public class JFrame {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="BuildAJTextAreal">
+    //<editor-fold defaultstate="collapsed" desc="BuildAJTable">
     public static JTable BuildAJTable(int cols, int rows, int xPos, int yPos, SpringLayout layout, Frame frame){
+
+        // Create column names
+        String[] column_names =
+                { "Word 1", "Word 2", "Sent"};
+
+        // Create some data
+        ArrayList dataValues = new ArrayList();
+        dataValues.add(new Object[] {"eff", "fdf", true});
+        dataValues.add(new Object[] {"Hi","there",true});
+        dataValues.add(new Object[] {"True","False",true});
+        dataValues.add(new Object[] {"Cat","Dog",false});
+
+        //cd_model = new CDModel.MyModel(dataValues, column_names);
 
         JTable my_table = new JTable(rows,cols);
         layout.putConstraint(SpringLayout.NORTH, my_table, yPos, SpringLayout.NORTH, frame);
         layout.putConstraint(SpringLayout.WEST,  my_table, xPos, SpringLayout.WEST, frame);
         frame.add(my_table);
-        return  my_table;
+        return my_table;
     }
     //</editor-fold>
 }

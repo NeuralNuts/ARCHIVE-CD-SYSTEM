@@ -1,6 +1,6 @@
 package AUTOMATION_CONSOLE;
 
-import BUILDER_LIBARY.JFrame;
+import ARCHIVE_CONSOLE.JFrame;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -48,30 +48,30 @@ public class AutomationConsoleForm extends javax.swing.JFrame implements ActionL
         setLayout(layout);
         Border black_line = BorderFactory.createLineBorder(Color.BLACK);
 
-        lbl_header_label = BUILDER_LIBARY.JFrame.BuildJLabel("Automation Console", 10, 0, 300, 40, layout, this);
+        lbl_header_label = JFrame.BuildJLabel1("Automation Console", 10, 0, 300, 40, layout, this);
         lbl_header_label.setForeground(Color.WHITE);
         lbl_header_label.setFont(new Font("Comic Sans", Font.BOLD, 30));
 
-        lbl_current_requested_action = BUILDER_LIBARY.JFrame.BuildJLabel("Current Requested Action:", 10, 10, 200, 100, layout, this);
+        lbl_current_requested_action = JFrame.BuildJLabel1("Current Requested Action:", 10, 10, 200, 100, layout, this);
         lbl_current_requested_action.setForeground(Color.WHITE);
         lbl_current_requested_action.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        txt_section = BUILDER_LIBARY.JFrame.BuildJTextField("", this, 100, 20, 51, 205, layout, this);
-        btn_process = BUILDER_LIBARY.JFrame.BuildJButton("Process", this, 100, 20, 32, 400, layout, this);
+        txt_section = JFrame.BuildJTextField("", this, 100, 20, 51, 205, layout, this);
+        btn_process = JFrame.BuildJButton("Process", this, 100, 20, 32, 400, layout, this);
 
-        lbl_bar_code_of_selected_item = BUILDER_LIBARY.JFrame.BuildJLabel("Bar Code of Selected Item:", 10, 50, 200, 100, layout, this);
+        lbl_bar_code_of_selected_item = JFrame.BuildJLabel1("Bar Code of Selected Item:", 10, 50, 200, 100, layout, this);
         lbl_bar_code_of_selected_item.setForeground(Color.WHITE);
         lbl_bar_code_of_selected_item.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        txt_bar_code_of_selected_item = BUILDER_LIBARY.JFrame.BuildJTextField("", this, 100, 20, 91, 205, layout, this);
+        txt_bar_code_of_selected_item = JFrame.BuildJTextField("", this, 100, 20, 91, 205, layout, this);
 
-        lbl_section = BUILDER_LIBARY.JFrame.BuildJLabel("Section:", 320, 50, 100, 100, layout, this);
+        lbl_section = JFrame.BuildJLabel1("Section:", 320, 50, 100, 100, layout, this);
         lbl_section.setForeground(Color.WHITE);
         lbl_section.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        txt_section = BUILDER_LIBARY.JFrame.BuildJTextField("", this, 20, 20, 91, 385, layout, this);
-        btn_add_item = BUILDER_LIBARY.JFrame.BuildJButton("Add Item" +
+        txt_section = JFrame.BuildJTextField("", this, 20, 20, 91, 385, layout, this);
+        btn_add_item = JFrame.BuildJButton("Add Item" +
                 "", this, 100, 20, 72, 500, layout, this);
 
-        tbl_archive_cd = BUILDER_LIBARY.JFrame.BuildAJTable(6,10, 10, 130, layout, this);
-        tbl_archive_cd.setBorder(black_line);
+        //tbl_archive_cd = ARCHIVE_CONSOLE.JFrame.BuildAJTable(6,10, 10, 130, layout, this);
+        //tbl_archive_cd.setBorder(black_line);
 
         btn_exit = JFrame.BuildJButton("Exit", this, 180, 20, 280, 445, layout, this);
 

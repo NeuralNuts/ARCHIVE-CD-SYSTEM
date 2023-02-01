@@ -1,11 +1,11 @@
 package ARCHIVE_CONSOLE;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class CDModel {
-    static class MyModel extends AbstractTableModel
-    {
+    static class MyModel extends AbstractTableModel {
         ArrayList<Object[]> al;
 
         // the headers
