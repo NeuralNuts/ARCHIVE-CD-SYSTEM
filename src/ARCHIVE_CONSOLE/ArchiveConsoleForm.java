@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionListener
 {
@@ -68,6 +69,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
                 txt_area_description;
 
     JTable tbl_archive_cd;
+    CDModel.MyModel cd_model;
     //</editor-fold>
 
     //<editor-fold default-state="collapsed" desc="UI">
@@ -84,6 +86,8 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
                 System.exit(0);
             }
         });
+
+        //<editor-fold default-state="collapsed" desc="UI">
 
         setLayout(layout);
         Border black_line = BorderFactory.createLineBorder(Color.BLACK);
@@ -115,7 +119,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         txt_area_process_log = JFrame.BuildAJTextArea(40, 9, 10, 355, layout, this);
         txt_area_process_log.setBorder(black_line);
 
-        lbl_display_binary_tree = JFrame.BuildJLabel("Display Binary tree:", 10, 490, 140, 50, layout, this);
+        lbl_display_binary_tree = JFrame.BuildJLabel("Display Binary tree:", 10, 490, 150, 50, layout, this);
         lbl_display_binary_tree.setForeground(Color.WHITE);
         lbl_display_binary_tree.setFont(new Font("Comic Sans", Font.BOLD, 15));
         btn_pre_order = JFrame.BuildJButton("Pre-Order", this, 100, 20, 489, 235, layout, this);
@@ -157,12 +161,12 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         lbl_bar_code = JFrame.BuildJLabel("BarCode:", 600, 160, 180, 100, layout, this);
         lbl_bar_code.setForeground(Color.WHITE);
         lbl_bar_code.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        txt_bar_code = JFrame.BuildJTextField("", this, 30, 20, 201, 670, layout, this);
+        txt_bar_code = JFrame.BuildJTextField("", this, 30, 20, 201, 680, layout, this);
 
         lbl_description = JFrame.BuildJLabel("Description:", 600, 190, 180, 100, layout, this);
         lbl_description.setForeground(Color.WHITE);
         lbl_description.setFont(new Font("Comic Sans", Font.BOLD, 15));
-        txt_area_description = JFrame.BuildAJTextArea(10, 3, 690, 237, layout, this);
+        txt_area_description = JFrame.BuildAJTextArea(10, 3, 700, 237, layout, this);
         txt_area_description.setBorder(black_line);
 
         lbl_automation_action_request = JFrame.BuildJLabel("Automation Action Request for the item above", 550, 260, 350, 100, layout, this);
@@ -185,7 +189,41 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
         btn_exit = JFrame.BuildJButton("Exit", this, 180, 20, 530, 820, layout, this);
 
+        //</editor-fold>
+
+        SelectionAllowed(true);
+        add(tbl_archive_cd);// Create a panel to hold all other components
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
+        add(topPanel);
+
+        // Create column names
+        String columnNames[] =
+                { "Word 1", "Word 2", "Sent"};
+
+        // Create some data
+        ArrayList<Object[]> dataValues = new ArrayList();
+        dataValues.add(new Object[] {"Yes","No",true});
+        dataValues.add(new Object[] {"Hi","there",true});
+        dataValues.add(new Object[] {"True","False",true});
+        dataValues.add(new Object[] {"Cat","Dog",false});
+
+        // constructor of JTable model
+        cd_model = new CDModel.MyModel(dataValues, columnNames);
+
+        // Create a new table instance
+        tbl_archive_cd = new JTable(cd_model);
+
+        // Configure some of JTable's paramters
+        tbl_archive_cd.isForegroundSet();
+        tbl_archive_cd.setShowHorizontalLines(false);
+        tbl_archive_cd.setRowSelectionAllowed(true);
+        tbl_archive_cd.setColumnS
+
+
         setVisible(true);
+
+
     }
     //</editor-fold>
 
