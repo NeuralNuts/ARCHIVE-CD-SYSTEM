@@ -1,6 +1,6 @@
 package ARCHIVE_CONSOLE;
 
-public class JTableInput {
+public class JTableInputModel {
     public String ID;
     public String Title;
     public String Author;
@@ -11,9 +11,9 @@ public class JTableInput {
     public String Description;
     public String OnLoan;
 
-    public JTableInput(){}
+    public JTableInputModel(){}
 
-    public JTableInput(String id, String title, String author, String section, String x, String y, String bar_code, String description, String on_loan){
+    public JTableInputModel(String id, String title, String author, String section, String x, String y, String bar_code, String description, String on_loan){
 
         ID = id;
         Title = title;

@@ -60,18 +60,23 @@ public class CDModel {
         }
 
         // a method to add a new line to the table
-        void add(String ID, String word2, boolean sent)
+        void add(String ID, String title, String author, String section, String x, String y, String bar_code, String description, String on_loan)
         {
             // make it an array[3] as this is the way it is stored in the ArrayList
             // (not best design but we want simplicity)
-            Object[] item = new Object[3];
+            Object[] item = new Object[9];
             item[0] = ID;
-            item[1] = word2;
-            item[2] = sent;
+            item[1] = title;
+            item[2] = author;
+            item[3] = section;
+            item[4] = x;
+            item[5] = y;
+            item[6] = bar_code;
+            item[7] = description;
+            item[8] = on_loan;
             al.add(item);
             // inform the GUI that I have change
             fireTableDataChanged();
         }
     }
-
 }

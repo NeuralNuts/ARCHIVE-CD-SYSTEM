@@ -67,6 +67,13 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
                 txt_area_description;
 
     CDModel.MyModel cd_model;
+
+    JTable tbl_archive_cd;
+
+    int current_index = 0;
+    JTableInputModel[] jtable_array = new JTableInputModel[9];
+    FileManager file = new FileManager();
+    int number_of_entries = 0;
     //</editor-fold>
 
     //<editor-fold default-state="collapsed" desc="UI">
@@ -185,33 +192,25 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
         //</editor-fold>
 
-        //SelectionAllowed(true);
-        //add(tbl_archive_cd);// Create a panel to hold all other components
-        //JPanel topPanel = new JPanel();
-        //topPanel.setLayout(new BorderLayout());
-        //add(topPanel);
-
         // Create column names
         String[] column_names =
                 { "ID", "Title", "Author", "Section", "X", "Y", "Bar Code", "Description", "On Loan"};
 
+        JTableInputModel jTableInputMethod = new JTableInputModel();
 
-        JTableInput[] jtable_input = new JTableInput[9];
+        jtable_array = file.ReadDataFromFile();
 
-        JTable tbl_archive_cd;
-        ArrayList<Object[]> dataValues = new ArrayList<>();
+        ArrayList<Object[]> dataValues = new ArrayList();
 
-        dataValues.add(new Object[]{
-                jtable_input[0],
-                jtable_input[1],
-                jtable_input[2],
-                jtable_input[3],
-                jtable_input[4],
-                jtable_input[5],
-                jtable_input[6],
-                jtable_input[7],
-                jtable_input[8]});
-
+            dataValues.add(new Object[] {jtable_array[0].ID});
+            dataValues.add(new Object[] {jtable_array[1].Title});
+            dataValues.add(new Object[] {jtable_array[2].Author});
+            dataValues.add(new Object[] {jtable_array[3].Section});
+            dataValues.add(new Object[] {jtable_array[4].X});
+            dataValues.add(new Object[] {jtable_array[5].Y});
+            dataValues.add(new Object[] {jtable_array[6].BarCode});
+            dataValues.add(new Object[] {jtable_array[7].Description});
+            dataValues.add(new Object[] {jtable_array[8].OnLoan});
 
         cd_model = new CDModel.MyModel(dataValues, column_names);
         tbl_archive_cd = new JTable(cd_model);
@@ -226,7 +225,7 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
         JPanel topPanel = new JPanel();
         add(topPanel);
 
-        JScrollPane scrollPane = tbl_archive_cd.createScrollPaneForTable(tbl_archive_cd);
+        JScrollPane scrollPane = JTable.createScrollPaneForTable(tbl_archive_cd);
         topPanel.add(scrollPane, BorderLayout.CENTER);
         topPanel.setPreferredSize(new Dimension(500, 115));
         layout.putConstraint(SpringLayout.WEST, topPanel, 10, SpringLayout.WEST, this);
@@ -236,12 +235,8 @@ public class ArchiveConsoleForm extends javax.swing.JFrame implements ActionList
 
 
         setVisible(true);
-
-
     }
     //</editor-fold>
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
