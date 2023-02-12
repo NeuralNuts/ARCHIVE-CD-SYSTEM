@@ -6,7 +6,7 @@ import java.io.FileReader;
 public class FileManager {
     public JTableInputModel[] ReadDataFromFile() {
 
-        JTableInputModel[] data = new JTableInputModel[9];
+        JTableInputModel[] data = new JTableInputModel[11];
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("CD_ArchivePrototype_SampleData.txt"));

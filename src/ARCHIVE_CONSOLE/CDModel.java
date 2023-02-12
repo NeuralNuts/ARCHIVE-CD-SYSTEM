@@ -78,5 +78,8 @@ public class CDModel {
             // inform the GUI that I have change
             fireTableDataChanged();
         }
+
+        public void add(String text, String text1, boolean selected) {
+        }
     }
 }
